@@ -20,3 +20,7 @@ primary_region = 'mia'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+[http_service.concurrency]
+  type = "connections"
+  hard_limit = 10000
+  soft_limit = 10000
