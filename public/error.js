@@ -1,15 +1,17 @@
 "use strict";
 const error = document.getElementById("uv-error");
 const errorCode = document.getElementById("uv-error-code");
-const registerButton = document.getElementById("uv-register-sw");
 
 if (location.pathname.startsWith(__uv$config.prefix)) {
-  error.textContent = "Error: The service worker is not registered.";
-  registerButton.classList.add("show");
+  error.textContent = "Please wait, registering service worker";
 }
 
-registerButton.addEventListener("click", async () => {
-  try {
+setTimeout(() => {
+  register();
+}, 500);
+
+async function register(){
+    try {
     await registerSW();
     location.reload();
   } catch (err) {
@@ -17,4 +19,4 @@ registerButton.addEventListener("click", async () => {
     errorCode.textContent = err.toString();
     registerButton.classList.remove("show");
   }
-});
+}
