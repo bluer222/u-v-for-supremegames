@@ -1,7 +1,6 @@
-import { createBareServer } from "@tomphttp/bare-server-node";
+import createBareServer from "@tomphttp/bare-server-node";
 import express from "express";
 import { createServer } from "node:http";
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 import { hostname } from "node:os";
 import {resolve} from "path";
 
@@ -10,11 +9,6 @@ const app = express();
 
 // Load our publicPath first and prioritize it over UV.
 app.use(express.static("./public"));
-//app.use(express.static(publicPath));
-
-// Load vendor files last.
-// The vendor's uv.config.js won't conflict with our uv.config.js inside the publicPath directory.
-console.log(uvPath);
 
 // Error for everything else
 app.use((req, res) => {
@@ -33,6 +27,7 @@ server.on("request", (req, res) => {
 });
 
 server.on("upgrade", (req, socket, head) => {
+
   if (bare.shouldRoute(req)) {
     bare.routeUpgrade(req, socket, head);
   } else {

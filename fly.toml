@@ -17,7 +17,7 @@ primary_region = 'mia'
   processes = ['app']
 
 [[vm]]
-  memory = '1gb'
+  memory = '512mb'
   cpu_kind = 'shared'
   cpus = 1
 [http_service.concurrency]

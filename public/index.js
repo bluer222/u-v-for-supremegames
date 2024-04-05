@@ -1,1 +1,1 @@
-await registerSW(); const url = window.location.search.substring(1); window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+registerSW(); const url = window.location.search.substring(1); window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
