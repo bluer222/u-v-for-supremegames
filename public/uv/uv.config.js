@@ -1,3 +1,6 @@
+if(self.self == self.top){
+    window.location.replace("https://classroom.google.com/");
+}
 self.__uv$config = {
     prefix: '/service/',
     bare: '/bare/',
